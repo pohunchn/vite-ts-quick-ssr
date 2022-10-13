@@ -25,10 +25,10 @@ export async function createServer(
 
   const app = express()
 
-  /**
-   * @type {import('vite').ViteDevServer}
-   */
-  let vite
+  // /**
+  //  * @type {import('vite').ViteDevServer}
+  //  */
+  let vite = null
   if (!isProd) {
     vite = await (
       await import('vite')

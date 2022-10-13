@@ -15,6 +15,7 @@
     "debug": "node --inspect-brk server"
   },
   "dependencies": {
+    "element-plus": "^2.2.18",
     "example-external-component": "file:example-external-component",
     "pinia": "^2.0.23",
     "vue": "^3.2.40",
