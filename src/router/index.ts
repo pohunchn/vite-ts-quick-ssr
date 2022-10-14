@@ -19,29 +19,27 @@ const router = createRouter({
     routes: getRoutes()
 })
 
-// router.beforeEach((to, from, next) => {
-// 	next()
-// })
+router.beforeEach((to, from, next) => {
+	next()
+})
 
 export default router;
 
 /** 以下代码不要修改 */
 function loadRouters() {
-	const context = import.meta.globEager("../views/**/*.vue");
-    const routes: RouteRecordRaw[] = [];
 
-    Object.keys(context).forEach((key: any) => {
-        if (key === "./index.ts") return;
+	const context = import.meta.glob('../views/**/*.vue')
+	const routes = Object.keys(context).map((key: any) => {
 		let name = key.replace(/(\.\.\/views\/|\.vue)/g, '');
 		let path = "/" + name.toLowerCase();
 		if (name === "Index") path = "/";
-		routes.push({
-			path: path,
-			name: name,
-			// component: () => import(`../views/${name}.vue`)
-			component: () => context[`../views/${name}.vue`]
-		})
-    });
+		console.log(path, name)
+		return {
+			path,
+			name,
+			component: context[key] // () => import('./views/**/*.vue')
+		}
+	})
 
     return { context, routes }
 }

@@ -4,6 +4,9 @@ import App from './App.vue'
 import router from './router/index'
 import { i18n } from "./i18n"
 
+import ElementPlus from "element-plus"
+import 'element-plus/theme-chalk/index.css'
+
 import "@/assets/css/setting.css";
 import "@/assets/css/global.css";
 
@@ -15,6 +18,7 @@ export function createApp() {
 	const pinia = createPinia()
 	app.use(pinia)
 	app.use(router)
+	app.use(ElementPlus, { size: 'mini' })
 	app.use(i18n)
 	return { app, router }
 }
