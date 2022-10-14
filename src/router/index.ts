@@ -10,7 +10,7 @@ function getRoutes() {
 }
 
 
-console.log(import.meta.env.SSR);
+console.log('isSSR->', import.meta.env.SSR);
 
 const router = createRouter({
     history: import.meta.env.SSR
@@ -33,7 +33,6 @@ function loadRouters() {
 		let name = key.replace(/(\.\.\/views\/|\.vue)/g, '');
 		let path = "/" + name.toLowerCase();
 		if (name === "Index") path = "/";
-		console.log(path, name)
 		return {
 			path,
 			name,

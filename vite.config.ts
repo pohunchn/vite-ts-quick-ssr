@@ -3,6 +3,7 @@ import { resolve } from "path"
 import { defineConfig } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { changePackageVersion } from "./build/plugins"
 
 const virtualFile = '@virtual-file'
 const virtualId = '\0' + virtualFile
@@ -24,6 +25,7 @@ export default defineConfig(({ command, ssrBuild }) => ({
     }
   },
   plugins: [
+    changePackageVersion(),
     vuePlugin({
       reactivityTransform: [/src/]
     }),
